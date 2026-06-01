@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - João Vitor Justino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/hacker-laptop.jpg') }}">
+</head>
+
+<body class="sobre">
+    <!-- Navegação -->
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="{{ url_for('home') }}" title="home">Home</a></li>
+            <li><a href="{{ url_for('sobre') }}" title="sobre-mim">Sobre</a></li>
+            <li><a href="{{ url_for('contato') }}" title="entrar-em-contato">Contato</a></li>
+            <li><a href="{{ url_for('curriculo') }}" title="acessar-curriculo">Currículo</a></li>
+            <li><a href="{{ url_for('algoritmos') }}" title="acessar-algoritmos">Algoritmos</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/joao-vitor-justino/">
+                <img src="{{ url_for('static', filename='image/linkdin.png') }}" alt="linkdin" title="joao-vitor-justino(linkdin)">
+            </a>
+            <a href="https://github.com/Jv131103">
+                <img src="{{ url_for('static', filename='image/github.png') }}" alt="github" title="joao-vitor-justino(github)">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Seção principal - Sobre -->
+    <section class="sobre-container">
+        <h1>Sobre Mim</h1>
+        <div class="info-container">
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='image/eu.jpeg') }}" alt="João Vitor Justino" title="João Vitor Justino">
+            </div>
+            <div class="descricao">
+                <h2>Olá, eu sou João Vitor!</h2>
+                <p>Sou desenvolvedor de sistemas, apaixonado por tecnologia e programação. Estudo Análise e Desenvolvimento de Sistemas (ADS) e busco sempre aprimorar meus conhecimentos, principalmente na área de algoritmos e lógica de programação. Além disso, tenho grande interesse por biotecnologia e física, áreas que planejo explorar no futuro.</p>
+                <p>Minha jornada começou há mais de 2 anos, e estou sempre em busca de novos desafios e oportunidades de crescimento. No meu tempo livre, gosto de escrever e explorar diferentes formas de expressão criativa.</p>
+                <p>Aqui no meu site, você encontrará informações sobre meu currículo, projetos, interesses e muito mais. Fique à vontade para navegar e aprender mais sobre mim!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-principal">
+        <p>© 2025 João Vitor Justino. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/chatbot.js') }}"></script>
+</body>
+
+</html>

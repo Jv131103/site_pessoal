@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo (João)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/hacker-laptop.jpg') }}">
+</head>
+
+<body class="curriculo">
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="{{ url_for('home') }}" title="home">Home</a></li>
+            <li><a href="{{ url_for('sobre') }}" title="sobre-mim">Sobre</a></li>
+            <li><a href="{{ url_for('contato') }}" title="entrar-em-contato">Contato</a></li>
+            <li><a href="{{ url_for('curriculo') }}" title="acessar-curriculo">Currículo</a></li>
+            <li><a href="{{ url_for('algoritmos') }}" title="acessar-algoritmos">Algoritmos</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/joao-vitor-justino/">
+                <img src="{{ url_for('static', filename='image/linkdin.png') }}" alt="linkdin" title="joao-vitor-justino(linkdin)">
+            </a>
+            <a href="https://github.com/Jv131103">
+                <img src="{{ url_for('static', filename='image/github.png') }}" alt="github" title="joao-vitor-justino(github)">
+            </a>
+            <a href="{{ url_for('static', filename='docs/João Vitor Justino.pdf') }}" download="Curriculo_Joao_Vitor.pdf">
+                <img src="{{ url_for('static', filename='image/cv.png') }}" alt="curriculo" title="Baixar Currículo joao-vitor-justino (PDF)">
+            </a>
+        </div>
+    </nav>
+
+    <h1>INFORMAÇÕES SOBRE MIM...</h1>
+    <div id="caixaTexto"></div>
+    
+    <div class="pdf-container">
+        <h1 class="pdf">Visualize o PDF abaixo:</h1>
+        <iframe src="{{ url_for('static', filename='docs/João Vitor Justino.pdf') }}" class="pdf-iframe" title="Documento João Vitor Justino"></iframe>
+        <a href="{{ url_for('static', filename='docs/João Vitor Justino.pdf') }}" download="Curriculo_Joao_Vitor.pdf" title="baixar PDF">
+            <h2>Download do PDF</h2>
+        </a>
+    </div>
+
+    <footer class="footer-principal">
+        <p>© 2025 João Vitor Justino. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/chatbot.js') }}"></script>
+</body>
+
+</html>

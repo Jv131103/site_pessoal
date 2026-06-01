@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - João Vitor Justino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/hacker-laptop.jpg') }}">
+</head>
+
+<body class="contato">
+    <!-- Navegação -->
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="{{ url_for('home') }}" title="home">Home</a></li>
+            <li><a href="{{ url_for('sobre') }}" title="sobre-mim">Sobre</a></li>
+            <li><a href="{{ url_for('contato') }}" title="entrar-em-contato">Contato</a></li>
+            <li><a href="{{ url_for('curriculo') }}" title="acessar-curriculo">Currículo</a></li>
+            <li><a href="{{ url_for('algoritmos') }}" title="acessar-algoritmos">Algoritmos</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/joao-vitor-justino/">
+                <img src="{{ url_for('static', filename='image/linkdin.png') }}" alt="linkdin" title="joao-vitor-justino(linkdin)">
+            </a>
+            <a href="https://github.com/Jv131103">
+                <img src="{{ url_for('static', filename='image/github.png') }}" alt="github" title="joao-vitor-justino(github)">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Seção principal - Contato -->
+    <section class="contato-container">
+        <h1>Entre em Contato</h1>
+        <p>Se você tem alguma dúvida ou quer conversar comigo, envie uma mensagem abaixo. Ficarei feliz em ouvir você!</p>
+
+        <!-- Mensagem de Sucesso ou Erro -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        <p class="status-mensagem">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Formulário de Contato -->
+        <form action="{{ url_for('contato') }}" method="POST" class="form-contato">
+            {{ form.hidden_tag() }}  <!-- Gera o campo CSRF automaticamente -->
+            
+            <label for="nome">Seu Nome</label>
+            {{ form.nome(class="input-field") }}
+
+            <label for="email">Seu E-mail</label>
+            {{ form.email(class="input-field") }}
+
+            <label for="mensagem">Mensagem</label>
+            {{ form.mensagem(class="textarea-field") }}
+
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer class="footer-principal">
+        <p>© 2025 João Vitor Justino. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/chatbot.js') }}"></script>
+    
+    <!-- Exibir alertas via JavaScript -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+                alert("{{ messages[0] }}");  // Alerta com a primeira mensagem flash
+            </script>
+        {% endif %}
+    {% endwith %}
+</body>
+
+</html>
