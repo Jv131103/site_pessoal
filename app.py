@@ -18,6 +18,7 @@ app = Flask(__name__)
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
 app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
 app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'true').lower() == 'true'
+app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
@@ -56,13 +57,25 @@ def contato():
 
         # Enviar o e-mail
         msg = Message(
-            subject="Mensagem de Contato",
-            recipients=[os.getenv('MAIL_USERNAME')],
-            body=f"Nome: {nome}\nE-mail: {email}\nMensagem: {mensagem}",
+            subject="Mensagem de Contato - Site Pessoal",
+            sender=app.config["MAIL_DEFAULT_SENDER"],
+            recipients=[app.config["MAIL_USERNAME"]],
+            body=f"""
+                Nome: {nome}
+                E-mail: {email}
+
+                Mensagem:
+                {mensagem}
+            """,
             reply_to=email
         )
         try:
             # Enviar a mensagem
+            print("MAIL_SERVER:", app.config["MAIL_SERVER"])
+            print("MAIL_PORT:", app.config["MAIL_PORT"])
+            print("MAIL_USE_TLS:", app.config["MAIL_USE_TLS"])
+            print("MAIL_USERNAME:", app.config["MAIL_USERNAME"])
+            print("MAIL_DEFAULT_SENDER:", app.config["MAIL_DEFAULT_SENDER"])
             mail.send(msg)
             flash('Mensagem enviada com sucesso!', 'success')
             return redirect(url_for('contato'))  # Redireciona para o GET da mesma página, limpando os dados do formulário
